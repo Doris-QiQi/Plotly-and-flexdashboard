@@ -115,3 +115,27 @@ ggplotly(box_ggplot)
 
 dashboards are a collection of related graphics (or tables, or other outputs) that are displayed in a structured way that’s easy to navigate.
 
+```{r}
+
+
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+

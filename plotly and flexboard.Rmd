@@ -5,7 +5,66 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+```{r,message=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+
+library(plotly)
+```
+
+## NYC Airbnb Data
 ```{r}
+data(nyc_airbnb)
+
+nyc_airbnb = 
+  nyc_airbnb %>% 
+  mutate(rating = review_scores_location / 2) %>%
+  select(
+    neighbourhood_group, neighbourhood, rating, price, room_type, lat, long) %>%
+  filter(
+    !is.na(rating), 
+    neighbourhood_group == "Manhattan",
+    room_type == "Entire home/apt",
+    price %in% 100:500)
 
 ```
 
+## 1. Plotly Scatterplot
+
+#### `str_c("text",variable)` combines text and the variable, using comma to connect
+#### `type = scatter` draws a scatter plot
+#### `mode = markers` draws the point like `geom_point`  remember the s
+#### `mode = lines` draws lines like `geom_line`         remember the s
+
+```{r}
+nyc_airbnb %>%
+  mutate(text_label = str_c("Price: $", price, "\nRating: ", rating)) %>% 
+  plot_ly(
+    x = ~lat, y = ~long, type = "scatter", mode = "markers",
+    color = ~price, text = ~text_label, alpha = 0.5)
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```

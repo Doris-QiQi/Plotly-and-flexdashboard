@@ -98,6 +98,7 @@ ggplotly(scatter_ggplot)
 #### `element_text(angle = , hjust =)` set the texg format
 #### `hjust`: Horizontal justification (in [0,1])
 #### `angle`:	Angle (in [0, 360])
+
 ```{r}
 box_ggplot = 
   nyc_airbnb %>% 
@@ -107,5 +108,10 @@ box_ggplot =
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ggplotly(box_ggplot)
-
 ```
+
+
+## 5. dashboards -- Flexboards
+
+dashboards are a collection of related graphics (or tables, or other outputs) that are displayed in a structured way that’s easy to navigate.
+

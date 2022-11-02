@@ -32,9 +32,10 @@ nyc_airbnb =
 ## 1. Plotly Scatterplot
 
 #### `str_c("text",variable)` combines text and the variable, using comma to connect
-#### `type = scatter` draws a scatter plot
-#### `mode = markers` draws the point like `geom_point`  remember the s
-#### `mode = lines` draws lines like `geom_line`         remember the s
+#### `type = "scatter"` draws a scatter plot
+#### `mode = "markers"` draws the point like `geom_point`  remember the s
+#### `mode = "lines"` draws lines like `geom_line`         remember the s
+#### `alpha` sets the transparency
 
 ```{r}
 nyc_airbnb %>%
@@ -46,14 +47,30 @@ nyc_airbnb %>%
 ```
 
 
-```{r}
 
+## 2. Plotly  Boxplot
+
+#### boxplot has no `mode` to choose from
+#### `type = "box"` to draw box plots
+#### By clicking on the groups, we can add or remove them
+#### `fct_reorder(vector1,vector2,.desc=F)` order v1 by v2, by default ascending
+
+```{r}
+nyc_airbnb %>% 
+  mutate(neighbourhood = fct_reorder(neighbourhood, price)) %>% 
+  plot_ly(y = ~price, color = ~neighbourhood, type = "box", colors = "viridis")
 
 ```
 
 
-```{r}
 
+## 3. Plotly barchart
+
+```{r}
+nyc_airbnb %>% 
+  count(neighbourhood) %>% 
+  mutate(neighbourhood = fct_reorder(neighbourhood, n)) %>% 
+  plot_ly(x = ~neighbourhood, y = ~n, color = ~neighbourhood, type = "bar", colors = "viridis")
 
 ```
 

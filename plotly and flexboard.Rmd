@@ -75,13 +75,37 @@ nyc_airbnb %>%
 ```
 
 
-```{r}
 
+## 4. ggplotly
+
+### gglotly scatterplot
+```{r}
+scatter_ggplot = 
+  nyc_airbnb %>%
+  ggplot(aes(x = lat, y = long, color = price)) +
+  geom_point(alpha = 0.25) +
+  coord_cartesian()
+
+ggplotly(scatter_ggplot)
 
 ```
 
 
-```{r}
+### gglotly boxplot
 
+#### `theme(axis.text.x = element_text(angle = 90, hjust = 1))`
+#### `axis.text.x =`, `axis.text.y = ` set the x and y axis text
+#### `element_text(angle = , hjust =)` set the texg format
+#### `hjust`: Horizontal justification (in [0,1])
+#### `angle`:	Angle (in [0, 360])
+```{r}
+box_ggplot = 
+  nyc_airbnb %>% 
+  mutate(neighbourhood = fct_reorder(neighbourhood, price)) %>% 
+  ggplot(aes(x = neighbourhood, y = price, fill = neighbourhood)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggplotly(box_ggplot)
 
 ```

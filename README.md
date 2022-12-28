@@ -1,2 +1,2 @@
 # Plotly-and-flexdashboard
-P8105 -- interactivity -- plotly and flexboard
+p8105 -- interactivity -- plotly and flexboard
